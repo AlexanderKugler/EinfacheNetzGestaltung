@@ -20,8 +20,8 @@ npm install einfache-netz-gestaltung
 
 Hier ist ein einfaches Beispiel, wie man eine Anwendung mit Einfache Netz Gestaltung erstellt:
 
-```brainfuck
-++++++++++[>+++++++>++++++++++>+++>+
+``` Merkel mach Döner 3€
+Nett hier Sticker aber waren sie schon mal in Baden-Württemberg 
 ```
 
 ## Konventionelle Commits
