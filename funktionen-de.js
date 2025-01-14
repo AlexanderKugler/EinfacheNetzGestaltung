@@ -75,8 +75,13 @@ function während(bedingung, aktion) {
     }
 }
 
+global.konsole = konsole;
+global.wenn = wenn;
+global.während = während;
+
 module.exports = {
     konsole,
     wenn,
-    während
+    während,
+    erweitert
 };
