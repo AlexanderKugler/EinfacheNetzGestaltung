@@ -75,13 +75,18 @@ function während(bedingung, aktion) {
     }
 }
 
-global.konsole = konsole;
-global.wenn = wenn;
-global.während = während;
+// Funktionen global verfügbar machen, falls im Browser
+if (typeof window !== 'undefined') {
+    window.konsole = konsole;
+    window.wenn = wenn;
+    window.während = während;
+}
 
-module.exports = {
-    konsole,
-    wenn,
-    während,
-    erweitert
-};
+// Funktionen exportieren, falls in Node.js
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        konsole,
+        wenn,
+        während
+    };
+}
