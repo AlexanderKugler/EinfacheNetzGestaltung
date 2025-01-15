@@ -4,17 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Einfache Netz Gestaltung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        eng-eingabe, eng-knopf, eng-kontrollkästchen, eng-auswahlliste {
+            display: block;
+            margin: 10px 0;
+        }
+        .element-value {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Einfache Netz Gestaltung</h1>
+    <header>
+        <h1>Einfache Netz Gestaltung</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Eingabe Element</h2>
+            <eng-eingabe platzhalter="Geben Sie etwas ein"></eng-eingabe>
+            <div class="element-value" id="inputValue">Aktueller Wert: </div>
+            <pre>
+&lt;eng-eingabe platzhalter="Geben Sie etwas ein"&gt;&lt;/eng-eingabe&gt;
+            </pre>
+        </section>
+        <section>
+            <h2>Knopf Element</h2>
+            <eng-knopf platzhalter="Drücken Sie mich"></eng-knopf>
+            <div class="element-value" id="buttonValue">Aktueller Wert: </div>
+            <pre>
+&lt;eng-knopf platzhalter="Drücken Sie mich"&gt;&lt;/eng-knopf&gt;
+            </pre>
+        </section>
+        <section>
+            <h2>Kontrollkästchen Element</h2>
+            <eng-kontrollkästchen platzhalter="Ich stimme zu"></eng-kontrollkästchen>
+            <div class="element-value" id="checkboxValue">Aktueller Wert: </div>
+            <pre>
+&lt;eng-kontrollkästchen platzhalter="Ich stimme zu"&gt;&lt;/eng-kontrollkästchen&gt;
+            </pre>
+        </section>
+        <section>
+            <h2>Dropdown Element</h2>
+            <eng-auswahlliste optionen="Option 1, Option 2, Option 3"></eng-auswahlliste>
+            <div class="element-value" id="dropdownValue">Aktueller Wert: Option 1</div>
+            <pre>
+&lt;eng-auswahlliste optionen="Option 1, Option 2, Option 3"&gt;&lt;/eng-auswahlliste&gt;
+            </pre>
+        </section>
+    </div>
     <script src="funktionen-de.js"></script>
     <script src="komponenten.js"></script>
     <script>
-        konsole.protokoll('Dies ist ein Test der konsole.protokoll Funktion.');
-    </script>
+        document.querySelector('eng-eingabe').shadowRoot.querySelector('input').addEventListener('input', (event) => {
+            document.getElementById('inputValue').textContent = `Aktueller Wert: ${event.target.value}`;
+        });
 
-    <eng-eingabe platzhalter="Geben sie etwas ein."></eng-eingabe>
-    <eng-knopf label="Drücken Sie mich"></eng-knopf>
-    <eng-kontrollkästchen label="Akzeptieren"></eng-kontrollkästchen>
+        document.querySelector('eng-knopf').shadowRoot.querySelector('button').addEventListener('click', () => {
+            document.getElementById('buttonValue').textContent = 'Aktueller Wert: Button clicked';
+        });
+
+        document.querySelector('eng-kontrollkästchen').shadowRoot.querySelector('input').addEventListener('change', (event) => {
+            document.getElementById('checkboxValue').textContent = `Aktueller Wert: ${event.target.checked}`;
+        });
+
+        document.querySelector('eng-auswahlliste').shadowRoot.querySelector('select').addEventListener('change', (event) => {
+            document.getElementById('dropdownValue').textContent = `Aktueller Wert: ${event.target.value}`;
+        });
+    </script>
 </body>
 </html>
