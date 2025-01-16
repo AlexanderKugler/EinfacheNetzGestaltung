@@ -1,0 +1,38 @@
+[EingabeElement], input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--aktuelle-textart);
+}
+
+[KnopfElement], button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--aktuelle-textart);
+}
+
+[KnopfElement="sekundär"] {
+    background-color: #6c757d;
+}
+
+[HerunterfallendesElement], select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-family: var(--aktuelle-textart);
+}
+
+[KontrollkästchenElement] label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+[KontrollkästchenElement] input[type="checkbox"] {
+    margin-right: 8px;
+}
