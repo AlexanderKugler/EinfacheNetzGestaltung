@@ -76,10 +76,10 @@
         </section>
         <section>
             <h2>Runterfallendes Element</h2>
-            <eng-auswahlliste optionen="Option 1, Option 2, Option 3"></eng-auswahlliste>
+            <eng-herunterfallendes-element optionen="Option 1, Option 2, Option 3"></eng-herunterfallendes-element>
             <div class="element-value" id="dropdownValue">Aktueller Wert: Option 1</div>
             <pre>
-&lt;eng-auswahlliste optionen="Option 1, Option 2, Option 3"&gt;&lt;/eng-auswahlliste&gt;
+&lt;eng-herunterfallendes-element optionen="Option 1, Option 2, Option 3"&gt;&lt;/eng-herunterfallendes-element&gt;
             </pre>
         </section>
     </div>
@@ -98,7 +98,7 @@
             document.getElementById('checkboxValue').textContent = `Aktueller Wert: ${event.target.checked}`;
         });
 
-        document.querySelector('eng-auswahlliste').shadowRoot.querySelector('select').addEventListener('change', (event) => {
+        document.querySelector('eng-herunterfallendes-element').shadowRoot.querySelector('select').addEventListener('change', (event) => {
             document.getElementById('dropdownValue').textContent = `Aktueller Wert: ${event.target.value}`;
         });
     </script>

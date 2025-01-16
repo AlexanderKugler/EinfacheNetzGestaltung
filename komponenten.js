@@ -3,8 +3,8 @@ class EingabeElement extends HTMLElement {
         super();
         const shadow = this.attachShadow({ mode: 'open' });
 
-        const style = document.createElement('style');
-        style.textContent = `
+        const stilblatt = document.createElement('style');
+        stilblatt.textContent = `
             input {
                 padding: 8px;
                 border: 1px solid #ccc;
@@ -17,7 +17,7 @@ class EingabeElement extends HTMLElement {
         eingabe.type = 'text';
         eingabe.placeholder = this.getAttribute('platzhalter') || 'Eingabe';
 
-        shadow.appendChild(style);
+        shadow.appendChild(stilblatt);
         shadow.appendChild(eingabe);
     }
 }
@@ -29,8 +29,8 @@ class KnopfElement extends HTMLElement {
         super();
         const schatten = this.attachShadow({ mode: 'open' });
 
-        const stillblatt = document.createElement('style');
-        stillblatt.textContent = `
+        const stilblatt = document.createElement('style');
+        stilblatt.textContent = `
             button {
                 padding: 10px 20px;
                 background-color: #007BFF;
@@ -48,7 +48,7 @@ class KnopfElement extends HTMLElement {
         const knopf = document.createElement('button');
         knopf.textContent = this.getAttribute('platzhalter') || 'Klick mich';
 
-        schatten.appendChild(stillblatt);
+        schatten.appendChild(stilblatt);
         schatten.appendChild(knopf);
     }
 }
@@ -60,8 +60,8 @@ class KontrollkästchenElement extends HTMLElement {
         super();
         const schatten = this.attachShadow({ mode: 'open' });
 
-        const stillblatt = document.createElement('style');
-        stillblatt.textContent = `
+        const stilblatt = document.createElement('style');
+        stilblatt.textContent = `
             label {
                 display: flex;
                 align-items: center;
@@ -78,20 +78,20 @@ class KontrollkästchenElement extends HTMLElement {
         etikett.textContent = this.getAttribute('platzhalter') || 'Akzeptieren';
         etikett.appendChild(kontrollkästchen);
 
-        schatten.appendChild(stillblatt);
+        schatten.appendChild(stilblatt);
         schatten.appendChild(etikett);
     }
 }
 
 customElements.define('eng-kontrollkästchen', KontrollkästchenElement);
 
-class AuswahllisteElement extends HTMLElement {
+class HerunterfallendesElement extends HTMLElement {
     constructor() {
         super();
         const schatten = this.attachShadow({ mode: 'open' });
 
-        const stillblatt = document.createElement('style');
-        stillblatt.textContent = `
+        const stilblatt = document.createElement('style');
+        stilblatt.textContent = `
             select {
                 padding: 8px;
                 border: 1px solid #ccc;
@@ -114,9 +114,9 @@ class AuswahllisteElement extends HTMLElement {
             console.log(`Dropdown value changed to: ${auswahlliste.value}`);
         });
 
-        schatten.appendChild(stillblatt);
+        schatten.appendChild(stilblatt);
         schatten.appendChild(auswahlliste);
     }
 }
 
-customElements.define('eng-auswahlliste', AuswahllisteElement);
+customElements.define('eng-herunterfallendes-element', HerunterfallendesElement);
