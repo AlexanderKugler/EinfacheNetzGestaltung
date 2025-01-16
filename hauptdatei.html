@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Einfache Netz Gestaltung</title>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&family=Playwrite+DE+SAS:wght@100..400&display=swap');
+
+        :root {
+            --aktuelle-textart: 'Playwrite DE Grund', Arial, sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--aktuelle-textart);
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
@@ -38,22 +44,31 @@
             display: block;
             margin: 10px 0;
         }
-        .element-value {
+        .element-wert {
             margin-top: 10px;
             font-size: 14px;
             color: #333;
+        }
+        .textart-wechseln {
+            background: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Einfache Netz Gestaltung</h1>
+        <button class="textart-wechseln" onclick="wechsleTextart()">Schriftart wechseln</button>
     </header>
     <div class="container">
         <section>
             <h2>Eingabe Element</h2>
             <eng-eingabe platzhalter="Geben Sie etwas ein"></eng-eingabe>
-            <div class="element-value" id="inputValue">Aktueller Wert: </div>
+            <div class="element-wert" id="eingabeWert">Aktueller Wert: </div>
             <pre>
 &lt;eng-eingabe platzhalter="Geben Sie etwas ein"&gt;&lt;/eng-eingabe&gt;
             </pre>
@@ -61,7 +76,7 @@
         <section>
             <h2>Knopf Element</h2>
             <eng-knopf platzhalter="Drücken Sie mich"></eng-knopf>
-            <div class="element-value" id="buttonValue">Aktueller Wert: </div>
+            <div class="element-wert" id="knopfWert">Aktueller Wert: </div>
             <pre>
 &lt;eng-knopf platzhalter="Drücken Sie mich"&gt;&lt;/eng-knopf&gt;
             </pre>
@@ -69,7 +84,7 @@
         <section>
             <h2>Kontrollkästchen Element</h2>
             <eng-kontrollkästchen platzhalter="Ich stimme zu"></eng-kontrollkästchen>
-            <div class="element-value" id="checkboxValue">Aktueller Wert: </div>
+            <div class="element-wert" id="kontrollkästchenWert">Aktueller Wert: </div>
             <pre>
 &lt;eng-kontrollkästchen platzhalter="Ich stimme zu"&gt;&lt;/eng-kontrollkästchen&gt;
             </pre>
@@ -77,7 +92,7 @@
         <section>
             <h2>Runterfallendes Element</h2>
             <eng-herunterfallendes-element optionen="Option 1, Option 2, Option 3"></eng-herunterfallendes-element>
-            <div class="element-value" id="dropdownValue">Aktueller Wert: Option 1</div>
+            <div class="element-wert" id="herunterfallendesElementWert">Aktueller Wert: Option 1</div>
             <pre>
 &lt;eng-herunterfallendes-element optionen="Option 1, Option 2, Option 3"&gt;&lt;/eng-herunterfallendes-element&gt;
             </pre>
@@ -87,20 +102,31 @@
     <script src="komponenten.js"></script>
     <script>
         document.querySelector('eng-eingabe').shadowRoot.querySelector('input').addEventListener('input', (event) => {
-            document.getElementById('inputValue').textContent = `Aktueller Wert: ${event.target.value}`;
+            document.getElementById('eingabeWert').textContent = `Aktueller Wert: ${event.target.element-wert}`;
         });
 
         document.querySelector('eng-knopf').shadowRoot.querySelector('button').addEventListener('click', () => {
-            document.getElementById('buttonValue').textContent = 'Aktueller Wert: Button clicked';
+            document.getElementById('knopfWert').textContent = 'Aktueller Wert: Button clicked';
         });
 
         document.querySelector('eng-kontrollkästchen').shadowRoot.querySelector('input').addEventListener('change', (event) => {
-            document.getElementById('checkboxValue').textContent = `Aktueller Wert: ${event.target.checked}`;
+            document.getElementById('kontrollkästchenWert').textContent = `Aktueller Wert: ${event.target.checked}`;
         });
 
         document.querySelector('eng-herunterfallendes-element').shadowRoot.querySelector('select').addEventListener('change', (event) => {
-            document.getElementById('dropdownValue').textContent = `Aktueller Wert: ${event.target.value}`;
+            document.getElementById('herunterfallendesElementWert').textContent = `Aktueller Wert: ${event.target.element-wert}`;
         });
+
+        function wechsleTextart() {
+            const wurzel = document.documentElement;
+            const aktuelleTextart = getComputedStyle(wurzel).getPropertyValue('--aktuelle-textart').trim();
+            
+            if (aktuelleTextart.includes('Grund')) {
+                wurzel.style.setProperty('--aktuelle-textart', "'Playwrite DE SAS', Arial, sans-serif");
+            } else {
+                wurzel.style.setProperty('--aktuelle-textart', "'Playwrite DE Grund', Arial, sans-serif");
+            }
+        }
     </script>
 </body>
 </html>
